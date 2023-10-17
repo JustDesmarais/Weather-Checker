@@ -19,11 +19,15 @@
     </header>
 
     <main class="container col-12 d-flex m-2">
-        <section id="search-column" class="col-3 position-relative">
-            <div id="search-box" class="position-relative">
+        <section id="search-column" class="col-3 flex-column align-items-center">
+            <div id="search-box" class="flex-column align-items-center p-2">
                 <h2>Search for a City:</h2>
-                <textarea id="search-field" placeholder="City Name"></textarea>
-                <button id="search-button" class="btn w-100">Search</button>
+                <textarea id="search-field" placeholder="City Name" class="w-100"></textarea>
+                <button id="search-button" class="btn w-100 bg-primary border-rounded text-white">Search</button>
+            </div>
+
+            <div id="modal" class="d-none zindex-modal position-fixed m-2 p-2 border-1 border-dark flex-column align-items-center">
+                <span id="close" class="float-end">&times;</span>
             </div>
 
             <div id="list-box">
@@ -31,7 +35,7 @@
             </div>
         </section>
 
-        <section id="weather-display" class="col-9">
+        <section id="weather-display" class="col-9 m-2">
             <div id="current-city" class="border border-dark border-1 p-2">
                 <h3 id="city-name">City Name</h3>
                 <ul class="m-2"> 
@@ -43,7 +47,7 @@
 
             <div id="forecast" class="m-2">
                 <h4>5-Day Forecast:</h4>
-                <ul></ul>
+                <div id="outlook" class="d-flex"></div>
             </div>
         </section>
     </main>
