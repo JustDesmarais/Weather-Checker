@@ -16,26 +16,27 @@ function getLoc () {
             console.log(data);
 
             for (var i=0; i<data.length; i++) {
-            var cityOpt = $('<button></button>').text(data[i].name + ', ' + data[i].state + ', ' + data[i].country).data('lat', data[i].lat).data('lon', data[i].lon).attr('id', 'city' + i);
+            var cityOpt = $('<button></button>').text(data[i].name + ', ' + data[i].state + ', ' + data[i].country).attr('data-lat', data[i].lat).attr('data-lon', data[i].lon).attr('id', 'city-option' + i).attr('class', 'm-1');
 
-            $('#modal').append(cityOpt);
+            $('#modal-list').append(cityOpt);
 
             console.log(cityOpt);
             };
 
             $('#modal').removeClass('d-none');
+
+            console.log($('#city-option1').data('lon'));
         })
         .catch(err => {
             console.error(err);
         });
 
-}
-
-
-
-function selectCity () {
+        
 
 }
+
+
+
 
 function closeModal () {
     $('#modal').addClass('d-none');
