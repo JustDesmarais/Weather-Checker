@@ -5,7 +5,7 @@ $('#search-button').click(getLoc);
 
 // function to get lat,lon coordinates while simultaneously allowing user to clarify city, state, country
 function getLoc () { 
-    var apiURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + $('#search-field').val() +'&limit=5&appid=fa09d3b5c74a7a76d7a2fb0ef78d5662'
+    var apiURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + $('#search-field').val() +'&limit=5&appid=fa09d3b5c74a7a76d7a2fb0ef78d5662'
 
     console.log(apiURL);
 
@@ -30,19 +30,15 @@ function getLoc () {
 
             $('#modal').removeClass('d-none');
             $('[id*="city-option"]').click(selectCity);
+            $('#close').click(closeModal);
         })
         .catch(err => {
             console.error(err);
         });    
-
 }
 
-$('#city-option0').click(function (){
-    console.log('click');
-});
-
+// run API for specifically selected location (using lon,lat to specify)
 function selectCity () {
-    $('textarea').val('');
     $('#current-conditions').empty();
     var finalAPI = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + $(this).data('lat') + '&lon=' + $(this).data('lon') + '&units=imperial&appid=fa09d3b5c74a7a76d7a2fb0ef78d5662'
     
@@ -67,14 +63,42 @@ function selectCity () {
     var cityText = $(this).text();
     prevSearch.push( {latitude, longitude, cityText});
     localStorage.setItem('searchData', JSON.stringify(prevSearch));
+    cityList();
     closeModal();
 
 
 };
 
+// function to fill list of most 10 most recently viewed cities
+function cityList (){
+    $('#city-list').empty()
+
+    var storedCities = JSON.parse(localStorage.getItem('searchData'));
+
+    if (storedCities !== null) {
+        prevSearch = storedCities.slice(-10);
+        console.log(prevSearch);
+
+        for(var i = prevSearch.length -1; i >= 0; i-- ){
+            if (i >= 0) {
+                var cityBtn = $('<button>').text(prevSearch[i].cityText).attr('id', 'stored-city' + i).attr('data-lat', prevSearch[i].latitude).attr('data-lon', prevSearch[i].longitude);
+
+            $('#city-list').append(cityBtn);
+            $('[id*="stored-city"]').click(selectCity);
+            };
+        };
+            
+         
+    } else return;
+};
+
+
+
+// function to close modal when city is selected or close button is selected
 function closeModal () {
     $('#modal').addClass('d-none');
     $('#modal-list').empty();
+    $('textarea').val('');
 };
 
-$('#close').click(closeModal);
+cityList ();
