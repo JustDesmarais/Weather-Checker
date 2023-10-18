@@ -14,13 +14,13 @@
 </head>
 
 <body>
-    <header class="container-fluid bg-primary p-2">
+    <header class="container-fluid bg-primary p-2 w-100">
         <h1 class="text-white text-center">What's the Weather?</h1>
     </header>
 
     <main class="container col-12 d-flex m-2">
         <section id="search-column" class="col-3 d-flex flex-column align-items-center">
-            <div id="search-box" class="d-flex flex-column align-items-center p-2">
+            <div id="search-box" class="d-flex flex-column align-items-center p-2 border-bottom border-2">
                 <h2>Search for a City:</h2>
                 <textarea id="search-field" placeholder="City Name" class="w-100"></textarea>
                 <button id="search-button" class="btn w-100 bg-primary border-rounded text-white m-2">Search</button>
@@ -32,17 +32,14 @@
             </div>
 
             <div id="list-box">
-                <ul id="city-list"></ul>
+                <ul id="city-list" class="d-flex flex-column-reverse align-items-center"></ul>
             </div>
         </section>
 
         <section id="weather-display" class="col-9 m-2">
             <div id="current-city" class="border border-dark border-1 p-2">
                 <h3 id="city-name">City Name</h3>
-                <ul class="m-2"> 
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
+                <ul id="current-conditions" class="m-2"> 
                 </ul>
             </div>
 
