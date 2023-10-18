@@ -16,11 +16,16 @@ function getLoc () {
             console.log(data);
 
             for (var i=0; i<data.length; i++) {
-            var cityOpt = $('<button></button>').text(data[i].name + ', ' + data[i].state + ', ' + data[i].country).attr('data-lat', data[i].lat).attr('data-lon', data[i].lon).attr('id', 'city-option' + i).attr('class', 'm-1');
+            var cityOpt = $('<button></button>');
+            
+            if (data[i].state != undefined) {
+              cityOpt.text(data[i].name + ', ' + data[i].state + ', ' + data[i].country).attr('data-lat', data[i].lat).attr('data-lon', data[i].lon).attr('id', 'city-option' + i).attr('class', 'm-1');
+            } else {
+              cityOpt.text(data[i].name + ', ' + data[i].country).attr('data-lat', data[i].lat).attr('data-lon', data[i].lon).attr('id', 'city-option' + i).attr('class', 'm-1'); 
+            };
 
             $('#modal-list').append(cityOpt);
 
-            console.log(cityOpt);
             };
 
             $('#modal').removeClass('d-none');
@@ -29,9 +34,7 @@ function getLoc () {
         })
         .catch(err => {
             console.error(err);
-        });
-
-        
+        });    
 
 }
 
@@ -40,6 +43,7 @@ function getLoc () {
 
 function closeModal () {
     $('#modal').addClass('d-none');
+    $('#modal-list').empty();
 }
 
 $('#close').click(closeModal);
