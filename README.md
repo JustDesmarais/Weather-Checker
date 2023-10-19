@@ -2,6 +2,8 @@
 
 An app to search for the weather in a city of your choosing.  Search for your city and get a 5-day forecast.  
 
+https://justdesmarais.github.io/Weather-Checker/
+
 The app will display the last 10 cities searched on the left-hand column.  Users can click on any listed item to view the 5-day forecast of the selected city.
 
 HTML and JavaScript written by Justin Desmarais.
