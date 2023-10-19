@@ -90,7 +90,7 @@ $(function () {
                 $('#current-city').children('img').attr('src', 'https://openweathermap.org/img/wn/' + png + '@2x.png')
                 $('#current-conditions').append(temp, wind, humidity);
                 
-                for (i=0; i<5; i++) {
+                for (i=0; i<4; i++) {
                     $(cards[i]).children('div').text('');
                     $(cards[i]).children('ul').empty();
 
@@ -185,7 +185,7 @@ $(function () {
                         $('#current-city').children('img').attr('src', 'https://openweathermap.org/img/wn/' + png + '@2x.png')
                         $('#current-conditions').append(temp, wind, humidity);
                         
-                        for (i=0; i<5; i++) {
+                        for (i=0; i<4; i++) {
                             $(cards[i]).children('div').text('');
                             $(cards[i]).children('ul').empty();
 
